@@ -1,7 +1,9 @@
-import { useState } from 'react'
+//import { useState } from 'react'
 import { Grid } from '@mui/material';
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import HeaderUI from './components/HeaderUI';
+import AlertUI from './components/AlertUI';
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
@@ -9,10 +11,10 @@ function App() {
     <Grid container spacing={5} justifyContent="center" alignItems="center" >
 
       {/* Encabezado */}
-      <Grid size={{ xs: 12, md: 12}} >Elemento: Encabezado</Grid>
+      <Grid size={12} ><HeaderUI /></Grid>
 
       {/* Alertas */}
-      <Grid size={{ xs: 12, md: 12}}>Elemento: Alertas</Grid>
+      <Grid size={12}><AlertUI description="No se proveen lluvias" /></Grid>
 
       {/* Selector */}
       <Grid size={{ xs: 12, md: 3}}>Elemento: Selector</Grid>
