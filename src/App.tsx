@@ -2,6 +2,7 @@
 import { Grid } from '@mui/material';
 import HeaderUI from './components/HeaderUI';
 import AlertUI from './components/AlertUI';
+import SelectorUI from './components/SelectorUI';
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
@@ -17,7 +18,7 @@ function App() {
       <Grid size={12}><AlertUI description="No se proveen lluvias" /></Grid>
 
       {/* Selector */}
-      <Grid size={{ xs: 12, md: 3}}>Elemento: Selector</Grid>
+      <Grid size={{ xs: 12, md: 3}}><SelectorUI /></Grid>
 
       {/* Indicadores */}
       <Grid size={{ xs: 12, md: 9}}>Elemento: Indicadores</Grid>
