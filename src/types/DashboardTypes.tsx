@@ -11,11 +11,7 @@ export interface OpenMeteoResponse {
   hourly_units: HourlyUnits
   hourly: Hourly
 }
-export interface FetchDataOutput {
-    data: OpenMeteoResponse | undefined;
-    loading: boolean;
-    error: string | null;
-}
+
 export interface CurrentUnits {
   time: string
   interval: string
@@ -37,9 +33,17 @@ export interface Current {
 export interface HourlyUnits {
   time: string
   temperature_2m: string
+  wind_speed_10m: string
 }
 
 export interface Hourly {
   time: string[]
   temperature_2m: number[]
+  wind_speed_10m: number[]
+}
+
+export interface FetchDataOutput {
+    data: OpenMeteoResponse | undefined;
+    loading: boolean;
+    error: string | null;
 }
