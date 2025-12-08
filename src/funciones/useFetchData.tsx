@@ -14,7 +14,7 @@ export default function useFetchData(): FetchDataOutput {
     const handleFetch = useCallback(
     async () => {
         try {
-            const url = 'https://api.open-meteo.com/v1/forecast?latitude=-2.1962&longitude=-79.8862&hourly=temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m&timezone=auto';
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=-2.1962&longitude=-79.8862&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m';
             const res = await fetch(url);
             if(!res.ok) throw new Error(res.statusText);
             const meteoResponse: OpenMeteoResponse = await res.json();
