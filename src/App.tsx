@@ -4,14 +4,18 @@ import HeaderUI from './components/HeaderUI';
 import AlertUI from './components/AlertUI';
 import SelectorUI from './components/SelectorUI';
 import IndicatorUI from './components/IndicatorUI';
-import useFetchData from './functions/useFetchData';
+import useFetchData from './funciones/useFetchData';
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
 
-  const dataFetcherOutput = useFetchData();
+  const {data, loading, error} = useFetchData();
+  const showData = (title: string) => {
+    if(loading) return <IndicatorUI title={title} description="Cargando..." />;
+    if(error) return <IndicatorUI title={title} description={error} />;
+  }
 
   
   return (
@@ -31,36 +35,40 @@ function App() {
               <Grid container size={{ xs: 12, md: 9 }} >
 
                  <Grid size={{ xs: 12, md: 3 }}>
-                         {dataFetcherOutput &&
+                         {showData('Temperatura (2m)')}
+                         {(data != undefined) &&
                             (<IndicatorUI
                               title='Temperatura (2m)'
-                              description={ `${dataFetcherOutput.current.temperature_2m} 
-                              ${dataFetcherOutput.current_units.temperature_2m}` } />)
+                              description={ `${data.current.temperature_2m} 
+                              ${data.current_units.temperature_2m}` } />)
                         }
                 
                  </Grid>
 
                  <Grid size={{ xs: 12, md: 3 }}>
-                        {dataFetcherOutput && 
+                        {showData('Temperatura aparente')}
+                        {(data != undefined) && 
                         (<IndicatorUI title='Temperatura aparente' description={
-                      `${dataFetcherOutput.current.apparent_temperature} 
-                      ${dataFetcherOutput.current_units.apparent_temperature}` } />)
+                      `${data.current.apparent_temperature} 
+                      ${data.current_units.apparent_temperature}` } />)
                         }
                  </Grid>
 
                  <Grid size={{ xs: 12, md: 3 }}>
-                        {dataFetcherOutput && 
+                        {showData('Velocidad del viento')}
+                        {(data != undefined) && 
                         (<IndicatorUI title='Velocidad del viento' description={
-                      `${dataFetcherOutput.current.wind_speed_10m} 
-                      ${dataFetcherOutput.current_units.wind_speed_10m}` } />)
+                      `${data.current.wind_speed_10m} 
+                      ${data.current_units.wind_speed_10m}` } />)
                         }
                  </Grid>
 
                  <Grid size={{ xs: 12, md: 3 }}>
-                        {dataFetcherOutput && 
+                        {showData('Humedad relativa')}
+                        {(data != undefined) && 
                         (<IndicatorUI title='Humedad relativa' description={
-                      `${dataFetcherOutput.current.relative_humidity_2m} 
-                      ${dataFetcherOutput.current_units.relative_humidity_2m}` } />)
+                      `${data.current.relative_humidity_2m} 
+                      ${data.current_units.relative_humidity_2m}` } />)
                         }
                  </Grid>
 
@@ -79,33 +87,7 @@ function App() {
     </Grid>
 
   )
-  /*
-  const [count, setCount] = useState(0)
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-*/
+  
 }
 
 export default App
