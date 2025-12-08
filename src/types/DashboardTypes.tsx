@@ -11,7 +11,11 @@ export interface OpenMeteoResponse {
   hourly_units: HourlyUnits
   hourly: Hourly
 }
-
+export interface FetchDataOutput {
+    data: OpenMeteoResponse | undefined;
+    loading: boolean;
+    error: string | null;
+}
 export interface CurrentUnits {
   time: string
   interval: string
