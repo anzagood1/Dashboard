@@ -4,19 +4,24 @@ import InputLabel from '@mui/material/InputLabel';
 import Select, {type SelectChangeEvent} from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
+interface SelectorProps {
+   onOptionSelect: (option: string) => void;
+}
 
-
-
-export default function SelectorUI() {
+export default function SelectorUI({ onOptionSelect }: SelectorProps) {
 
     const [cityInput, setCityInput] = useState('');
 
     const handleChange = (event: SelectChangeEvent<string>) => {
         setCityInput(event.target.value);
+                   // Comunique los cambios al componente padre
+       onOptionSelect(event.target.value);
     };
 
+
+
     const handleClick = () => {
-        alert(`click!`);
+        console.log(`click!`);
     };
 
 return (
