@@ -7,15 +7,18 @@ import IndicatorUI from './components/IndicatorUI';
 import useFetchData from './funciones/useFetchData';
 import ChartUI from './components/TableUI';
 import TableUI from './components/ChartUI';
+import { useState } from 'react';
 //import reactLogo from './assets/react.svg'
 //import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-
-  const {data, loading, error} = useFetchData();
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  
+  
+  const {data, loading, error} = useFetchData(selectedOption);
   const showData = (title: string) => {
-    if(loading) return <IndicatorUI title={title} description="Cargando..." />;
+    if(loading && data == undefined ) return <IndicatorUI title={title} description="Cargando..." />;
     if(error) return <IndicatorUI title={title} description={error} />;
   }
 
@@ -30,11 +33,11 @@ function App() {
       <Grid size={12}><AlertUI description="No se proveen lluvias" /></Grid>
 
       {/* Selector */}
-      <Grid size={{ xs: 12, md: 3}}><SelectorUI /></Grid>
+      <Grid size={{ xs: 12, md: 3}}><SelectorUI onOptionSelect={setSelectedOption} /></Grid>
 
       {/* Indicadores */}
       <Grid size={{ xs: 12, md: 9}}>
-              <Grid container size={{ xs: 12, md: 9 }} >
+              <Grid container spacing={2}>
 
                  <Grid size={{ xs: 12, md: 3 }}>
                          {showData('Temperatura (2m)')}
