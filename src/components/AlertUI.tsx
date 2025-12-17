@@ -5,7 +5,13 @@ interface AlertConfig {
 }
 
 export default function AlertUI(config: AlertConfig) {
-    return (
-        <Alert variant = "outlined" severity = "success"> {config.description}</Alert>
-    )
+    if (config.description.includes("¡Atención!")) {
+        return (
+            <Alert variant="outlined" severity="info"> {config.description}</Alert>
+        );
+    } else {
+        return (
+            <Alert variant="outlined" severity="success"> {config.description}</Alert>
+        );
+    }
 }   
