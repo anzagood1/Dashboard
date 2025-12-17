@@ -22,7 +22,7 @@ export default function useFetchData(selectedOption: string | null): FetchDataOu
         setDataState(prev => ({ ...prev, loading: true, error: null }));
         try {
             const cityConfig = selectedOption != null? CITY_COORDS[selectedOption] : CITY_COORDS["guayaquil"];
-            const url = `https://api.open-meteo.com/v1/forecast?latitude=${cityConfig.latitude}&longitude=${cityConfig.longitude}&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m`;
+            const url = `https://api.open-meteo.com/v1/forecast?latitude=${cityConfig.latitude}&longitude=${cityConfig.longitude}&hourly=temperature_2m,wind_speed_10m&current=temperature_2m,relative_humidity_2m,apparent_temperature,wind_speed_10m,precipitation`;
             const res = await fetch(url);
             if(!res.ok) throw new Error(res.statusText);
             const meteoResponse: OpenMeteoResponse = await res.json();
