@@ -1,73 +1,23 @@
-# React + TypeScript + Vite
+# 🌦️ Weather Dashboard con IA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un Dashboard de Clima interactivo desarrollado con React, TypeScript y Vite. Proporciona información meteorológica en tiempo real, visualizaciones gráficas y un asistente inteligente impulsado por Cohere AI para ofrecer recomendaciones para el clima actual de la ciudad escogida.
 
-Currently, two official plugins are available:
+## 🚀 Características Principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Datos en Tiempo Real**: Consulta de temperatura, humedad, velocidad del viento y sensación térmica usando la API de [Open-Meteo](https://open-meteo.com/).
+- **Multi-Ciudad**: Soporte para consultar el clima de ciudades principales como Guayaquil, Quito, Manta y Cuenca.
+- **Asistente IA (Cohere)**: Un asistente integrado que analiza los datos climáticos y ofrece resúmenes y recomendaciones de vestimenta y actividades.
+- **Alertas Inteligentes**: Sistema de notificaciones que advierte sobre lluvias detectadas en la zona.
+- **Visualización de Datos**: Gráficos y tablas para analizar tendencias climáticas.
+- **Modo Oscuro Automático**: La interfaz se adapta automáticamente a la preferencia de tema del sistema operativo.
+- **Diseño Responsivo**: Interfaz moderna y adaptable construida con Material UI.
 
-## React Compiler
+## 🛠️ Tecnologías Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Frontend**: React 18, TypeScript, Vite.
+- **UI Framework**: Material UI (MUI).
+- **APIs**:
+  - Open-Meteo (Datos del clima).
+  - Cohere AI (Procesamiento de lenguaje natural).
+- **Gráficos**: MUI X Charts.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
